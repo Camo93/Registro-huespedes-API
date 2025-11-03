@@ -95,3 +95,27 @@ button:hover {
     background-color: #0056b3;
     box-shadow: 0 4px 10px rgba(0, 86, 179, 0.4);
 }
+
+.accordion {
+    background-color: #3498db;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .accordion.active {
+    background-color: #2980b9;
+  }
+
+  .panel {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
