@@ -37,6 +37,8 @@ app.post("/huespedes", async (req, res) => {
       destino,
       dias_hospedados,
       cantidad_personas,
+      contacto_emergencia,
+      observaciones,
     } = req.body;
 
     // Log para depuración
@@ -48,10 +50,11 @@ app.post("/huespedes", async (req, res) => {
         correo, nombre_completo, cedula, lugar_expedicion_id, pasaporte,
         direccion_residencia, telefono, numero_habitacion, fecha_ingreso,
         hora_llegada, fecha_salida, nacionalidad, estado_civil, profesion,
-        lugar_origen, destino, dias_hospedados, cantidad_personas
+        lugar_origen, destino, dias_hospedados, cantidad_personas,contacto_emergencia,
+        observaciones
       )
       VALUES (
-        $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18
+        $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20
       )
       RETURNING *`,
       [
@@ -73,6 +76,8 @@ app.post("/huespedes", async (req, res) => {
         destino,
         dias_hospedados,
         cantidad_personas,
+        contacto_emergencia,
+        observaciones,
       ]
     );
 

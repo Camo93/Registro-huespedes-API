@@ -11,11 +11,11 @@
   <form id="registroForm">
     <input type="email" id="correo" name="correo" placeholder="Correo" required>
     <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Nombre completo" required>
-    <input type="text" id="cedula" name="cedula" required placeholder="Cedula">
+    <input type="text" id="cedula" name="cedula" placeholder="Cédula" required pattern="\d+">
     <input type="text" id="lugar_expedicion_id" name="lugar_expedicion_id" placeholder="Lugar de expedición ID">
     <input type="text" id="pasaporte" name="pasaporte" placeholder="Pasaporte">
     <input type="text" id="direccion_residencia" name="direccion_residencia" placeholder="Dirección de residencia">
-    <input type="text" id="telefono" name="telefono" placeholder="Teléfono">
+    <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required pattern="\d+">
     <select id="numero_habitacion" name="numero_habitacion"  required>
         <option value="" disabled selected>Número de habitación</option>
         <option value="1">Hanitación 1-piso 2</option>
@@ -68,6 +68,15 @@
         <option value="3">3</option>
         <option value="4">4</option>
         </select>
+
+  <!-- Observaciones / Preferencias -->
+  <label for="emergencia">Contacto de emergencia (opcional):</label>
+  <input type="text" id="contacto_emergencia" name="contacto_emergencia" placeholder="Escribe aquí nombre completo, telefono y relación">
+
+ <!-- Observaciones / Preferencias -->
+  <label for="observaciones">Observaciones / Preferencias (opcional):</label>
+  <input type="text" id="observaciones" name="observaciones" placeholder="Escribe aquí tus observaciones">
+
 
 <!-- Acordeón para políticas de privacidad -->
     <button type="button" class="accordion">Leer políticas de tratamiento de datos</button>
