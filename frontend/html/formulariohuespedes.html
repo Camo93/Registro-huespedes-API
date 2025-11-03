@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Huésped</title>
+  <link rel="stylesheet" href="../css/stylehuespedes.css">
+</head>
+<body>
+  <h1>Formulario huespedes</h1>
+  <form id="registroForm">
+    <input type="email" id="correo" name="correo" placeholder="Correo" required>
+    <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Nombre completo" required>
+    <input type="text" id="cedula" name="cedula" required placeholder="Cedula">
+    <input type="text" id="lugar_expedicion_id" name="lugar_expedicion_id" placeholder="Lugar de expedición ID">
+    <input type="text" id="pasaporte" name="pasaporte" placeholder="Pasaporte">
+    <input type="text" id="direccion_residencia" name="direccion_residencia" placeholder="Dirección de residencia">
+    <input type="text" id="telefono" name="telefono" placeholder="Teléfono">
+    <select id="numero_habitacion" name="numero_habitacion"  required>
+        <option value="" disabled selected>Número de habitación</option>
+        <option value="1">Hanitación 1-piso 2</option>
+        <option value="2">Habitación 2-piso 2</option>
+        <option value="3">Habitación 3-piso 2</option>
+        <option value="4">Habitación 4-piso 2</option>
+        <option value="5">Habitación 5-piso 2</option>
+        <option value="6">Habitación 6-piso 2</option>
+        <option value="7">Habitación 7-piso 2</option>
+        <option value="8">Habitación 8-piso 2</option>
+        <option value="9">Habitación 9-piso 2</option>
+        <option value="10">Habitación 1-piso 3</option>
+        <option value="11">Habitación 2-piso 3</option>
+        <option value="12">Habitación 3-piso 3</option>
+        <option value="13">Habitación 4-piso 3</option>
+        <option value="14">Habitación 5-piso 3</option>
+        <option value="15">Habitación 6-piso 3</option>
+        <option value="16">Habitación 1-piso 4</option>
+        <option value="17">Habitación 2-piso 4</option>
+        </select>
+         <div class="field-group">
+         <label for="fecha_ingreso">Fecha de ingreso:</label>
+         <input type="date" id="fecha_ingreso" name="fecha_ingreso" required>
+         </div>
+        <div class="field-group">
+         <label for="hora_llegada">Hora de Llegada:</label>
+         <input type="time" id="hora_llegada" name="hora_llegada"  required>
+         </div>
+        <div class="field-group">
+         <label for="fecha_salida">Fecha de Salida:</label>
+         <input type="date" id="fecha_salida" name="fecha_salida"  required>
+         </div>
+        <input type="text" id="nacionalidad" name="nacionalidad"   placeholder="Nacionalidad">
+        <select id="estado_civil" name="estado_civil"  required>
+        <option value="" disabled selected>Estado civil</option>
+        <option value="1">Casado/a</option>
+        <option value="2">soltero/a</option>
+        <option value="3">Unión libre</option>
+        <option value="4">Divorciado/a</option>
+        <option value="5">Otro</option>
+        </select>
+    <input type="text" id="profesion" name="profesion" placeholder="Profesión">
+    <input type="text" id="lugar_origen" name="lugar_origen"  placeholder="Lugar de origen">
+    <input type="text" id="destino" name="destino"  placeholder="Destino">
+    <input type="number" id="dias_hospedados" name="dias_hospedados"   placeholder="Días hospedados">
+    <select id="cantidad_personas" name="cantidad_personas"   required>
+        <option value="" disabled selected>Cantidad de personas</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        </select>
+    <button type="submit">Registrar</button>
+  </form>
+
+  <script src="../js/formulariohuesped.js"></script>
+</body>
+</html>

@@ -6,13 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 // 🧠 Configura tu conexión a PostgreSQL
 const pool = new Pool({
-  user: "postgres",          // tu usuario de PostgreSQL
+  user: "postgres", // tu usuario de PostgreSQL
   host: "localhost",
   database: "registro_huespedes", // el nombre de tu BD
-  password: "Aa123456",     // cámbiala según tu caso
+  password: "Aa123456", // cámbiala según tu caso
   port: 5432,
 });
 
@@ -40,7 +39,10 @@ app.post("/huespedes", async (req, res) => {
       cantidad_personas,
     } = req.body;
 
-    // No incluimos "numero_total_reservas", el trigger lo hace solo 👇
+    // Log para depuración
+    console.log("Datos de huésped recibidos:", req.body);
+
+    // Ejecuta la consulta SQL
     const result = await pool.query(
       `INSERT INTO huespedes (
         correo, nombre_completo, cedula, lugar_expedicion_id, pasaporte,
@@ -74,10 +76,11 @@ app.post("/huespedes", async (req, res) => {
       ]
     );
 
-    res.json(result.rows[0]);
+    console.log(`✅ Huésped insertado correctamente: ${result.rows[0].nombre_completo}`);
+    res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error("Error insertando huésped:", error);
-    res.status(500).json({ error: "Error al insertar huésped" });
+    res.status(500).json({ error: "Error interno al insertar huésped" });
   }
 });
 
@@ -89,11 +92,10 @@ app.get("/huespedes", async (req, res) => {
     );
     res.json(result.rows);
   } catch (error) {
-    console.error("Error consultando huéspedes:", error); // 👈 muestra el error real en consola
-    res.status(500).json({ error: error.message }); // 👈 ahora el navegador mostrará el mensaje real
+    console.error("Error consultando huéspedes:", error);
+    res.status(500).json({ error: error.message });
   }
 });
-
 
 // 🚀 Inicia el servidor
 const PORT = 3000;

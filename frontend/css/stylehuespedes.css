@@ -1,0 +1,97 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    width: 100%;
+    color: #333333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+input:not([type="date"]):not([type="time"]), select, button {
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    color: #495057;
+}
+
+select option[disabled]:first-child {
+    color: #ced4da;
+}
+
+select:valid {
+    color: #495057;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+
+    padding: 8px 12px;
+}
+
+.field-group label {
+    font-size: 13px;
+    color: #495057;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.field-group input {
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: #495057;
+}
+
+
+.field-group:focus-within {
+    border-color: #007BFF;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+input:not([type="date"]):not([type="time"]):focus, select:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 86, 179, 0.4);
+}
