@@ -1,16 +1,12 @@
 # Node.js
 # Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# Este pipeline instala dependencias, empaqueta y publica artefactos del proyecto ubicado en /backend
 
 trigger:
   - master
 
 pool:
   vmImage: 'ubuntu-latest'
-
-variables:
-  - group: Config-Despliegue-API # Enlaza el grupo de variables de la librería
 
 steps:
   - task: NodeTool@0
@@ -19,12 +15,13 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
+      cd backend
       npm install
     displayName: 'npm install'
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/backend'
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
