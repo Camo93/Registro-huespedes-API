@@ -16,6 +16,8 @@ const pool = new Pool({
 });
 
 // ✅ Ruta para insertar un nuevo huésped
+// Esta ruta activa el TRIGGER 'trg_gestionar_reservas' en la base de datos,
+// que se encarga de calcular 'numero_total_reservas' (contador por cédula).
 app.post("/huespedes", async (req, res) => {
   try {
     const {
@@ -50,7 +52,7 @@ app.post("/huespedes", async (req, res) => {
         correo, nombre_completo, cedula, lugar_expedicion_id, pasaporte,
         direccion_residencia, telefono, numero_habitacion, fecha_ingreso,
         hora_llegada, fecha_salida, nacionalidad, estado_civil, profesion,
-        lugar_origen, destino, dias_hospedados, cantidad_personas,contacto_emergencia,
+        lugar_origen, destino, dias_hospedados, cantidad_personas, contacto_emergencia,
         observaciones
       )
       VALUES (
@@ -89,11 +91,23 @@ app.post("/huespedes", async (req, res) => {
   }
 });
 
-// ✅ Ruta para ver todos los huéspedes
+// ✅ Ruta para ver todos los huéspedes, incluyendo el contador sin saltos (1, 2, 3...)
 app.get("/huespedes", async (req, res) => {
   try {
+    // Usamos ROW_NUMBER() para generar una columna 'registro_consecutivo'
+    // que cuenta las filas de 1 a N sin importar los saltos en 'id' (el número de orden que solicitaste).
     const result = await pool.query(
-      "SELECT id, nombre_completo, numero_total_reservas FROM huespedes ORDER BY id"
+      `SELECT
+        ROW_NUMBER() OVER (ORDER BY id) as registro_consecutivo,
+        id,
+        nombre_completo,
+        cedula,
+        numero_total_reservas, -- Contador de reservas por cédula (1, 2, 3...)
+        numero_habitacion,
+        fecha_ingreso,
+        fecha_salida
+       FROM huespedes
+       ORDER BY id`
     );
     res.json(result.rows);
   } catch (error) {
